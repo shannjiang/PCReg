@@ -17,7 +17,7 @@ parser.add_argument("--mtx4pc_file", type=str,
                     help="matrix for dimensionality reduction")
 parser.add_argument("--covars_file", type=str,
                     help="covar matrix for logistic regression")
-parser.add_argument("--variance_thre", type=float, default=0.9,
+parser.add_argument("--variance_thre", type=float, default=0.8,
                     help="percent of variance to keep PCs")
 parser.add_argument("--dr_method", type=str, default='rbf',
                     help="dimensionality reduction method")
