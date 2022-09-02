@@ -22,4 +22,8 @@ The example command to run PCReg:
 
 ***--dep_var*** is the argument to provide dependent or response variable in the model. The variable name needs to match exactly the column name of the dependent variable in the covariate matrix.
 
+You can get all the argument descriptions with the command:
+
+**python PCReg_logistic_regression_argparse_final.py --help**
+
 PCReg calculates and exports Chi-square statistics and corresponding P value for the PCs from the PC regression.
