@@ -10,11 +10,11 @@ You need to provide one matrix file for dimensionality reduction and one covaria
 
 The example command to run PCReg:
 
-**python PCReg_logistic_regression_argparse_final.py --mtx4pc_file dimensionality_reduction_matrix.csv --covars_file covariate_matrix.csv --variance_thre 0.9 --dr_method rbf --covars age sex RIN --dep_var diagnosis**
+**python PCReg_logistic_regression_argparse_final.py --mtx4pc_file dimensionality_reduction_matrix.csv --covars_file covariate_matrix.csv --variance_thre 0.8 --dr_method rbf --covars age sex RIN --dep_var diagnosis**
 
 ***--mtx4pc_file*** is the argument to provide the dimensionality reduction matrix file and ***--covars_file*** is the argument to provide the covariate matrix file.
 
-***--variance_thre*** is the argument to provide the threshold for accumulative variance which can be explained by top PCs. The threshold ranges between 0 and 1. Default threshold is 0.9.
+***--variance_thre*** is the argument to provide the threshold for accumulative variance which can be explained by top PCs. The threshold ranges between 0 and 1. Default threshold is 0.8.
 
 ***--dr_method*** is the argument to provide the dimensionality reduction method to use. Available options include **linear, poly, rbf, sigmoid, cosine**. Default method is rbf. This argument is passed from KernelPCA of sklearn. For detailed description please refer to: https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html
 
