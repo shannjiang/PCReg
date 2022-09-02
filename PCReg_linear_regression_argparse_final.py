@@ -18,9 +18,9 @@ parser.add_argument("--mtx4pc_file", type=str,
 parser.add_argument("--covars_file", type=str,
                     help="covar matrix for linear regression")
 parser.add_argument("--variance_thre", type=float, default=0.8,
-                    help="percent of variance to keep PCs")
+                    help="percent of variance to keep the PCs. default value is 0.8.")
 parser.add_argument("--dr_method", type=str, default='rbf',
-                    help="dimensionality reduction method")
+                    help="dimensionality reduction method. default method is radial basis function.")
 parser.add_argument('--covars', nargs='+',
                     help='covariates for linear regression')
 parser.add_argument('--dep_var', type=str,
