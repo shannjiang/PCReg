@@ -16,4 +16,8 @@ The example command to run PCReg:
 
 ***--variance_thre*** is the argument to provide the threshold for accumulative variance which can be explained by top PCs. The threshold ranges between 0 and 1. Default threshold is 0.9.
 
+***--dr_method*** is the argument to provide the dimensionality reduction method to use. Available options include **linear, poly, rbf, sigmoid, cosine**. Default method is rbf. This argument is passed from KernelPCA of sklearn. For detailed description please refer to: https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html
 
+***--covars*** is the argument to provide covariates you want to include in the model. The covariate names need to match exactly the column names of the covariates in the covariate matrix.
+
+***--dep_var*** is the argument to provide dependent or response variable in the model. The variable name needs to match exactly the column name of the dependent variable in the covariate matrix.
