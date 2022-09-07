@@ -17,6 +17,8 @@ parser.add_argument("--mtx4pc_file", type=str,
                     help="matrix for dimensionality reduction")
 parser.add_argument("--covars_file", type=str,
                     help="covar matrix for logistic regression")
+parser.add_argument("--out_file", type=str,
+                    help="output file name")
 parser.add_argument("--variance_thre", type=float, default=0.8,
                     help="percent of variance to keep the PCs. default value is 0.8.")
 parser.add_argument("--dr_method", type=str, default='rbf',
@@ -28,7 +30,7 @@ parser.add_argument('--dep_var', type=str,
 args = parser.parse_args()
 
 
-def DimensionReduction4Regression(mtx4pc, dr_method, variance_thre):
+def DimensionReduction4Regression(mtx4pc, dr_method, variance_thre, maxPC=10):
     pca_method = KernelPCA(kernel=dr_method)
     PCs = pca_method.fit_transform(mtx4pc.to_numpy())
     PCnums = list(range(1, PCs.shape[1]+1))
@@ -48,6 +50,8 @@ def DimensionReduction4Regression(mtx4pc, dr_method, variance_thre):
         PCcum_variances.append(cum_variance)
     PCvariance_df['PCcum_variance'] = PCcum_variances
     retain_PCvariance_df = PCvariance_df[PCvariance_df['PCcum_variance'] < variance_thre]
+    if retain_PCvariance_df.shape[0] > maxPC:
+        retain_PCvariance_df = retain_PCvariance_df.head(maxPC)
     PCs_df = pd.DataFrame(PCs, columns=PCnames)
     PCs_df.index = covars.index
     retain_PCs_df = PCs_df[retain_PCvariance_df['PCname'].to_list()]
@@ -90,5 +94,7 @@ covars = pd.read_csv(args.covars_file, header=0, index_col=0)
 
 retain_PCs_df = DimensionReduction4Regression(mtx4pc, args.dr_method, args.variance_thre)
 res = PC_LogisticRegression(retain_PCs_df, covars, args.covars, args.dep_var)
+res2 = pd.DataFrame.from_dict(res, orient='index', columns=['statistics'])
+res2.to_csv(args.out_file)
 
 print('chi_stat is ' + str(res['chi_stat']) + ', Pvalue is ' + str(res['pvalue']))
