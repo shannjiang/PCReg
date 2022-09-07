@@ -10,17 +10,17 @@ You need to provide one matrix file for dimensionality reduction and one covaria
 
 The example command to run PCReg:
 
-**python PCReg_logistic_regression_argparse_final.py --mtx4pc_file dimensionality_reduction_matrix.csv --covars_file covariate_matrix.csv --variance_thre 0.8 --dr_method rbf --covars age sex RIN --dep_var diagnosis**
+**python PCReg_logistic_regression_argparse_final.py --mtx4pc_file dimensionality_reduction_matrix.csv --out_file res.csv --covars_file covariate_matrix.csv --variance_thre 0.8 --dr_method rbf --covars age sex RIN --dep_var diagnosis**
 
-***--mtx4pc_file*** is the argument to provide the dimensionality reduction matrix file and ***--covars_file*** is the argument to provide the covariate matrix file.
+***--mtx4pc_file*** is the argument to provide the dimensionality reduction matrix file, ***--covars_file*** is the argument to provide the covariate matrix file, and ***--out_file*** is the argument to specify the output file name.
 
 ***--variance_thre*** is the argument to provide the threshold for accumulative variance which can be explained by top PCs. The threshold ranges between 0 and 1. Default threshold is 0.8.
 
 ***--dr_method*** is the argument to provide the dimensionality reduction method to use. Available options include **linear, poly, rbf, sigmoid, cosine**. Default method is rbf. This argument is passed from KernelPCA of sklearn. For detailed description please refer to: https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html
 
-***--covars*** is the argument to provide covariates you want to include in the model. The covariate names need to match exactly the column names of the covariates in the covariate matrix. If no covariate to provide, please specify it as None (**--covars None**).
+***--covars*** is the argument to provide covariates you want to include in the model. The covariate names need to match exactly the column names of the covariates in the covariate matrix. If no covariate to provide, please specify it as None (**--covars None**). ***NOTE: Please hardcode any character variables into integer variables.***
 
-***--dep_var*** is the argument to provide dependent or response variable in the model. The variable name needs to match exactly the column name of the dependent variable in the covariate matrix.
+***--dep_var*** is the argument to provide dependent or response variable in the model. The variable name needs to match exactly the column name of the dependent variable in the covariate matrix. ***NOTE: Please hardcode any character variables into integer variables.***
 
 You can get all the argument descriptions with the command:
 
