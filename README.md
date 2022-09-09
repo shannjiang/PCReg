@@ -26,4 +26,4 @@ You can get all the argument descriptions with the command:
 
 **python PCReg_logistic_regression_argparse_final.py --help**
 
-PCReg calculates and exports Chi-square statistics and corresponding P value for the PCs from the PC regression.
+PCReg calculates and exports Chi-square statistics and corresponding P value for the PCs from the PC regression to the file you specified in the argument **--out_file**.
